@@ -8,3 +8,8 @@ export const MONGO_BD_VARS = {
   MONGO_URL: 'MONGO_URL',
   MONGO_DB: 'MONGO_DB',
 };
+
+export const SORT_ORDER = {
+  ASC: 'asc',
+  DESC: 'desc',
+};
