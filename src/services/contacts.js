@@ -1,5 +1,6 @@
 import { SORT_ORDER } from '../constants/index.js';
 import { contactModel } from '../db/models/contact.js';
+import { UsersCollections } from '../db/models/user.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 
 export const getAllContacts = async ({
@@ -65,3 +66,5 @@ export const updateContact = async (contactId, payload, options = {}) => {
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };
+
+
