@@ -7,6 +7,7 @@ import { ENV_VARS } from './constants/index.js';
 import router from './routers/index.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';
 
 export const startServer = () => {
   const app = express();
@@ -20,6 +21,7 @@ export const startServer = () => {
   );
   app.use(cors());
   app.use(express.json());
+  app.use(cookieParser());
 
   app.get('/', (req, res) => {
     res.json({
