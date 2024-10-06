@@ -23,6 +23,7 @@ router.post(
   crltWrapper(loginUserController),
 );
 router.post('/logout', crltWrapper(logoutUserController));
-export default router;
 
 router.post('/refresh', crltWrapper(refreshUserSessionController));
+
+export default router;
