@@ -19,6 +19,7 @@ import { checkRoles } from '../middlewares/checkRoles.js';
 import { ROLES } from '../constants/index.js';
 
 const router = Router();
+
 router.use(authenticate);
 
 router.get('/', checkRoles(ROLES.USER), crltWrapper(getContactsController));
