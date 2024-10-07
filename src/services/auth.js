@@ -11,6 +11,8 @@ import { randomBytes } from 'crypto';
 
 export const registerUser = async (payload) => {
   const user = await UsersCollections.findOne({ email: payload.email });
+
+  
   if (user) throw createHttpError(409, 'Email in use');
 
   const encryptedPassword = await bcrypt.hash(payload.password, 10);
@@ -64,7 +66,7 @@ const createSession = () => {
   };
 
 
-  
+
   export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
     const session = await SessionsCollection.findOne({
       _id: sessionId,

@@ -33,6 +33,7 @@ router.get(
 
 router.post(
   '/register',
+  checkRoles(ROLES.USER),
   validateBody(createContactSchema),
   crltWrapper(createContactController),
 );
