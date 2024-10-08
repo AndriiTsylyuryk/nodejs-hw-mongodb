@@ -13,7 +13,7 @@ export const getAllContacts = async ({
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
-  const contactsQuery = contactModel.find();
+  const contactsQuery = contactModel.find({ userId: filter.userId });
   if (filter.type) {
     contactsQuery.where('contactType').equals(filter.type);
   }
@@ -37,8 +37,8 @@ export const getAllContacts = async ({
   };
 };
 
-export const getContactsById = async (contactId) => {
-  const contact = await contactModel.findById(contactId);
+export const getContactsById = async ({ _id, userId }) => {
+  const contact = await contactModel.findOne({ _id, userId });
   return contact;
 };
 
@@ -47,16 +47,22 @@ export const createContact = async (payload) => {
   return contact;
 };
 
-export const deleteContact = async (contactId) => {
+export const deleteContact = async (id, userId) => {
   const contact = await contactModel.findOneAndDelete({
-    _id: contactId,
+    id,
+    userId,
   });
   return contact;
 };
 
-export const updateContact = async (contactId, payload, options = {}) => {
+export const updateContact = async (
+  contactId,
+  payload,
+  userId,
+  options = {},
+) => {
   const rawResult = await contactModel.findByIdAndUpdate(
-    { _id: contactId },
+    { _id: contactId, userId },
     payload,
     { new: true, includeResultMetadata: true, ...options },
   );
@@ -66,5 +72,3 @@ export const updateContact = async (contactId, payload, options = {}) => {
     isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };
-
-
