@@ -3,7 +3,7 @@ import express from 'express';
 import pino from 'pino-http';
 import cors from 'cors';
 import { env } from './utils/env.js';
-import { ENV_VARS } from './constants/index.js';
+import { ENV_VARS, UPLOAD_DIR } from './constants/index.js';
 import router from './routers/index.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -30,6 +30,8 @@ export const startServer = () => {
   });
 
   app.use(router);
+  
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use('*', notFoundHandler);
 
