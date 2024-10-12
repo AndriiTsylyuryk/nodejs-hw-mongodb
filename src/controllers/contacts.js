@@ -91,7 +91,9 @@ export const upsertContactController = async (req, res, next) => {
 
 export const patchStudentController = async (req, res, next) => {
   const { contactId } = req.params;
+
   const photo = req.file;
+
   let photoUrl;
   if (photo) {
     if (env('ENABLE_CLOUDINARY') === 'true') {
