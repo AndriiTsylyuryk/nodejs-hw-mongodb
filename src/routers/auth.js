@@ -33,13 +33,14 @@ router.post('/logout', crltWrapper(logoutUserController));
 router.post('/refresh', crltWrapper(refreshUserSessionController));
 
 router.post(
-  '/request-reset-email',
+  '/send-reset-email',
   validateBody(requestResetEmailSchema),
   crltWrapper(requestResetEmailController),
 );
 router.post(
-  '/reset-password',
+  '/reset-pwd',
   validateBody(resetPasswordSchema),
   crltWrapper(resetPasswordController),
 );
+
 export default router;
