@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "url": null
+      "url": "https://nodejs-hw-mongodb-2-h5gq.onrender.com"
     }
   ],
   "tags": [
@@ -33,7 +33,7 @@
         "tags": [
           "Contacts"
         ],
-        "summary": "Get contacts by id",
+        "summary": "Get contact by id",
         "operationId": "getContact",
         "description": "Get contact by id",
         "security": [
@@ -137,7 +137,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "204": {
             "description": "Contact successfully deleted"
           },
           "404": {
@@ -180,7 +180,7 @@
                     "type": "string",
                     "example": "Kateryna Povalenko"
                   },
-                  "phone": {
+                  "phoneNumber": {
                     "description": "Contact phoneNumber",
                     "type": "string",
                     "example": "+380000000005"
@@ -204,13 +204,9 @@
                     ],
                     "default": "personal"
                   },
-                  "userId": {
-                    "description": "Contacts user id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "photo": {
                     "description": "Link to contacts photo",
+                    "format": "binary",
                     "type": "string",
                     "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
                   }
@@ -417,7 +413,7 @@
                     "type": "string",
                     "example": "Name Name"
                   },
-                  "phone": {
+                  "phoneNumber": {
                     "description": "Contact phone number",
                     "type": "string",
                     "example": "+51651561"
@@ -441,14 +437,10 @@
                     ],
                     "default": "personal"
                   },
-                  "userId": {
-                    "description": "User ID to which the contact belongs",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "photo": {
                     "description": "Link to contacts photo",
                     "type": "string",
+                    "format": "binary",
                     "example": "https://res.cloudinary.com/uqwgdu/image/upload/image.png"
                   }
                 }
